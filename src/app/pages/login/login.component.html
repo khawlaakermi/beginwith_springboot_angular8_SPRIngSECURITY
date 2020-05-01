@@ -1,0 +1,13 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Animated Login with HTML and CSS</title>
+  </head>
+  <body>
+    <form  class="box" method="post" name="form" (ngSubmit)=" onSubmit()" >
+      <input type="text" placeholder="Username" [(ngModel)]="form.username" name="username" #username="ngModel">
+      <input type="password" placeholder="Password" [(ngModel)]="form.password"  name="password" #password="ngModel">
+      <input type="submit" value="Login">
+    </form>
+  </body>
+</html>

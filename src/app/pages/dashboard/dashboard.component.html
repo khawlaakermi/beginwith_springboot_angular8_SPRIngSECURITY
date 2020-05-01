@@ -1,0 +1,113 @@
+
+<div class=" content">
+  <div class=" row" >
+  <div class="col-md-4"  >
+      <div class=" card">
+        <div class=" card-header"><h5 class=" title">Ajout nouveau joueur</h5></div>
+        <div class=" card-body">
+          <form (ngSubmit)="onSubmit()">
+            <div class=" row">
+ 
+              <div class=" col-md-4 px-md-1">
+                <div class=" form-group">
+                  <label> Nom </label>
+                       <input   class=" form-control" type="text" placeholder="nom" name="nom"
+                        id="nom" required [(ngModel)]="joueur.nom" required>
+                </div>
+              </div>
+              <div class=" col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label > Prenom </label>
+                        <input class=" form-control" type="text" placeholder="prenom" id="prenom"
+                         required [(ngModel)]="joueur.prenom" name="prenom" required> 
+
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class="col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label for="exampleInputEmail1"> Email</label>
+                  <input
+                    class=" form-control"
+                    placeholder="Email@com"
+                    type="text"
+                    id="email"
+                     required
+                      [(ngModel)]="joueur.email" name="email"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label> Numero </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Numero"
+                    type="text"
+                    required
+                    id="numero" required [(ngModel)]="joueur.numero" name="numero"
+                  />
+                </div>
+              </div>
+
+            </div>
+             <div class=" row">
+             <div class="col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label > Equipe</label>
+                  <select class="select" ng-disabled="!all" [(ngModel)]="joueur.equipe" class="align-bottom" name="equipe">
+                  <option>Choisir equipe</option>
+                  <option *ngFor="let equipe of equipes | async " [ngValue]="equipe" required>{{equipe.nom}} </option>          
+                  </select>
+                 
+                </div>
+              </div>
+             </div>
+                 <div class=" card-footer">
+                   <button class=" btn btn-fill btn-danger" type="submit">Save</button>
+                </div>
+          </form>
+        </div>
+  
+      </div>
+    </div>
+    <div class=" col-md-8">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">List des Joueurs</h4>
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter" id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Email</th>
+                  <th>Numero</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let joueur of joueurs | async">
+                  <td>{{joueur.nom}}</td>
+                  <td>{{joueur.prenom}}</td>
+                  <td>{{joueur.email}}</td>
+                  <td>{{joueur.numero}}</td>
+                  <td><button (click)="deleteJoueur(joueur.id)" >Delete</button></td>
+                  <td><button (click)="UpdateJoueur(joueur.id)" >Update</button></td>
+                </tr>
+                
+                
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+
+</div>

@@ -1,0 +1,95 @@
+
+<div class=" content">
+  <div class=" row" >
+  <div class="col-md-4"  >
+      <div class=" card">
+        <div class=" card-header"><h5 class=" title">Ajout nouveau Staff</h5></div>
+        <div class=" card-body">
+          <form  (ngSubmit)="onSubmit()">
+            <div class=" row">
+ 
+              <div class=" col-md-4 px-md-1">
+                <div class=" form-group">
+                  <label> Designation </label>
+                  <input
+                    class=" form-control"
+                    placeholder="Username"
+                    name="Designation"
+                     id="designation" 
+                    required [(ngModel)]="staff.designation"
+                     required
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label > Nombre</label>
+                  <input
+                    class=" form-control"
+                    placeholder="nombre"
+                    type="text"
+                    id="nombre" required
+                    [(ngModel)]="staff.nombre_membre" 
+                    name="Nombre" required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class="col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label> Equipe </label>
+                  <select class="select" ng-disabled="!all" [(ngModel)]="staff.equipe" class="align-bottom" name="equipe">
+                    <option>Choisir equipe</option>
+                    <option *ngFor="let equipe of equipes | async " [ngValue]="equipe">{{equipe.nom}} </option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+             <div class=" card-footer">
+          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
+        </div>
+          </form>
+        </div>
+       
+      </div>
+    </div>
+    <div class=" col-md-8">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">List des Staffs</h4>
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter" id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>Designation</th>
+                  <th>Nombre</th>
+                  <th>Action</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let staff of staffs | async">
+                  <td>{{staff.designation}}</td>
+                  <td>{{staff.nombre}}</td>
+    
+                  <td><button (click)="deleteStaff(staff.id)" >Delete</button></td>
+                  <td><button (click)="UpdateStaff(staff.id)" >Update</button></td>
+                </tr>
+                
+                
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+
+</div>
